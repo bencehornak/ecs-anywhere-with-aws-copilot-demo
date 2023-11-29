@@ -1,0 +1,13 @@
+- op: replace
+  path: /Resources/TaskDefinition/Properties/RequiresCompatibilities/0
+  value: EXTERNAL
+- op: replace
+  path: /Resources/TaskDefinition/Properties/NetworkMode
+  value: bridge
+- op: replace
+  path: /Resources/Service/Properties/LaunchType
+  value: EXTERNAL
+- op: remove
+  path: /Resources/Service/Properties/PlatformVersion
+- op: remove
+  path: /Resources/Service/Properties/NetworkConfiguration
