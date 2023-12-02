@@ -1,0 +1,44 @@
+Parameters:
+  App:
+    Type: String
+    Description: Your application's name.
+  Env:
+    Type: String
+    Description: The environment name your service, job, or workflow is being deployed to.
+  Name:
+    Type: String
+    Description: Your workload's name.
+
+Resources:
+  TraefikEcsPolicy:
+    Type: "AWS::IAM::ManagedPolicy"
+    Metadata:
+      "aws:copilot:description": A Managed IAM Policy for Traefik to allow discovering ECS services
+    Properties:
+      Description: Allows Traefik to discover ECS services
+      PolicyDocument:
+        {
+          "Version": "2012-10-17",
+          "Statement":
+            [
+              {
+                "Sid": "TraefikECSReadAccess",
+                "Effect": "Allow",
+                "Action":
+                  [
+                    "ecs:ListClusters",
+                    "ecs:DescribeClusters",
+                    "ecs:ListTasks",
+                    "ecs:DescribeTasks",
+                    "ecs:DescribeContainerInstances",
+                    "ecs:DescribeTaskDefinition",
+                    "ec2:DescribeInstances",
+                    "ssm:DescribeInstanceInformation",
+                  ],
+                "Resource": ["*"],
+              },
+            ],
+        }
+Outputs:
+  TraefikEcsPolicy:
+    Value: !Ref TraefikEcsPolicy
