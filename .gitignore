@@ -1,2 +1,2 @@
 .vagrant/
-*.cfn.yaml
+*.cfn.yml
