@@ -9,15 +9,18 @@ memory: 1024
 count: 1
 exec: true
 
+storage:
+  volumes:
+    dockerSocket:
+      path: /var/run/docker.sock
+
 deployment:
   # Traefik has binds to some ports on the host and because of that rolling updates have to be disabled
   rolling: recreate
 
 command:
-  - "--api.dashboard=true"
-  - "--api.insecure=true"
-  - "--accesslog=true"
-  - "--providers.ecs.ecsAnywhere=true"
-  - "--providers.ecs.region=eu-central-1"
-  - "--providers.ecs.autoDiscoverClusters=true"
-  - "--providers.ecs.exposedByDefault=false"
+  - --api.dashboard=true
+  - --api.insecure=true
+  - --accesslog=false
+  - --providers.docker=true
+  - --providers.docker.exposedbydefault

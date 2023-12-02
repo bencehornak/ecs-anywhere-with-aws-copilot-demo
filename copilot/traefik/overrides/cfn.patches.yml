@@ -21,3 +21,7 @@
     - ContainerPort: 8080
       HostPort: 8080
       Protocol: tcp
+
+- op: add
+  path: /Resources/TaskDefinition/Properties/Volumes/0/Host
+  value: /var/run/docker.sock
