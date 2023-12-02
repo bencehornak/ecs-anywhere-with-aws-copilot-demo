@@ -1,0 +1,10 @@
+name: whoami
+type: Backend Service
+
+image:
+  location: public.ecr.aws/traefik/whoami:latest
+
+cpu: 256
+memory: 512
+count: 1
+exec: true
